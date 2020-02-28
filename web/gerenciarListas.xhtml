@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:ui="http://java.sun.com/jsf/facelets" 
+      xmlns:f="http://java.sun.com/jsf/core" 
+      xmlns:h="http://java.sun.com/jsf/html"> 
+    <h:head> 
+        <title>Spotify - #{usuarioLogado.nome}</title> 
+    </h:head> 
+    <h:body> 
+        <h:form>
+            
+            <p>Listas do Usuario <h:commandButton action="novaLista.xhtml" value="+"></h:commandButton> </p>
+            
+            <h:dataTable value="#{listaForm.Listar(usuarioLogado.login)}"  var="lis" >
+                
+                <h:column>
+                    <h:outputText value="#{lis.id}"> </h:outputText>
+                    <f:facet name="header">
+                        <h:outputText value="ID"> </h:outputText>
+                    </f:facet>
+                </h:column>
+                
+                <h:column>
+                    <h:outputText value="#{lis.nome}"> </h:outputText>
+                    <f:facet name="header">
+                        <h:outputText value="Nome"> </h:outputText>
+                    </f:facet>
+                </h:column>
+                
+                <h:column>
+                    <h:commandLink action="#{listaForm.excluir(lis.id)}" value="%"> </h:commandLink>
+                    <f:facet name="header">
+                        <h:outputText value="Excluir"> </h:outputText>
+                    </f:facet>
+                </h:column>
+                
+                <h:column>
+                    <h:commandLink action="#{musicaForm.abrirLista(lis.id)}"   value="*"> </h:commandLink>
+                    <f:facet name="header">
+                        <h:outputText value="Abrir"> </h:outputText>
+                    </f:facet>
+                </h:column>
+
+            </h:dataTable>
+        </h:form>
+    </h:body> 
+</html>

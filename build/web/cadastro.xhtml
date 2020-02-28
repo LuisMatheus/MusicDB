@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:ui="http://java.sun.com/jsf/facelets" 
+      xmlns:f="http://java.sun.com/jsf/core" 
+      xmlns:h="http://java.sun.com/jsf/html"> 
+    <h:head> 
+        <title>Cadastro</title> 
+        <script type="text/javascript" language="javascript">
+            function formatCartao(texto) {
+                var cart = texto.value.length;
+                if(cart===4){
+                    return texto.value = texto.value+' ';
+                }if(cart===9){
+                    return texto.value = texto.value+' ';
+                }if(cart===14){
+                    return texto.value = texto.value+' ';
+                }
+                    
+            }
+            
+            function formatValidade(texto){
+                var txt = texto.value.length;
+                if(txt===2){
+                    return texto.value = texto.value+'/';
+                }
+            }
+        </script>
+    </h:head> 
+    <h:body> 
+            <h:form id="formcadastro">
+                Login: <h:inputText id="login" required="true" value="#{usuarioForm.usuario.login}"/>
+                <br></br>
+                Senha: <h:inputSecret id="senha" required="true" value="#{usuarioForm.usuario.senha}"/>
+                <br></br>
+                Nome: <h:inputText id="nome" required="true" value="#{usuarioForm.usuario.nome}"/>
+                <br></br>
+                Cartão: <h:inputText id="cartao" required="true" maxlength="19" onkeyup="formatCartao(this)" value="#{usuarioForm.usuario.cartao}"/>
+                <br></br>
+                Validade: <h:inputText id="validade" required="true" onkeyup="formatValidade(this)" maxlength="5" value="#{usuarioForm.usuario.validade}"></h:inputText>
+                <br></br>
+                Código de Segurança: <h:inputText id="codigodeseguranca" required="true" maxlength="3" value="#{usuarioForm.usuario.codigodeseguranca}"/>
+                <br></br>
+                <h:commandButton value="Enviar" action="#{usuarioForm.cadastrar}" ></h:commandButton>
+            </h:form>
+    </h:body> 
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:ui="http://java.sun.com/jsf/facelets" 
+	xmlns:f="http://java.sun.com/jsf/core" 
+	xmlns:h="http://java.sun.com/jsf/html"> 
+<h:head> 
+	<title>Login</title> 
+</h:head> 
+<h:body> 
+	<h:form>
+		<h:panelGrid columns="2">
+			<h:outputText value="Login:"></h:outputText> 
+			<h:inputText value="#{usuarioForm.usuario.login}"></h:inputText>
+			
+			<h:outputText value="Senha:"></h:outputText>
+			<h:inputSecret value="#{usuarioForm.usuario.senha}"></h:inputSecret>
+			
+			<h:commandButton value="Enviar" action="#{usuarioForm.FazerLogin}"></h:commandButton> <h:commandButton value="Cadastrar" action="cadastro.xhtml"></h:commandButton>
+		</h:panelGrid>
+	</h:form>
+</h:body> 
+</html>
